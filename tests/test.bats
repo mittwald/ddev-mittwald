@@ -30,7 +30,7 @@ setup_ssh_in_ddev() {
 setup_addon_from_dir() {
   export MITTWALD_SKIP_CONFIG=yes
 
-  ddev get ${DIR}
+  ddev add-on get ${DIR}
   ddev restart >/dev/null
 }
 
@@ -38,7 +38,7 @@ setup_addon_from_dir() {
   set -eu -o pipefail
   cd ${TESTDIR}
 
-  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  echo "# ddev add-on get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
   setup_addon_from_dir
 }
 
@@ -79,8 +79,8 @@ EOF
   export MITTWALD_SKIP_CONFIG=yes
 
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
-  echo "# ddev get mittwald/ddev with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
-  ddev get mittwald/ddev
+  echo "# ddev add-on get mittwald/ddev-mittwald with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  ddev add-on get mittwald/ddev-mittwald
   ddev restart >/dev/null
 }
 
