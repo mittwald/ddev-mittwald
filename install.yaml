@@ -2,6 +2,8 @@
 
 name: mittwald
 
+ddev_version_constraint: '>= v1.24.3'
+
 # pre_install_actions - list of actions to run before installing the addon.
 pre_install_actions:
 - |
