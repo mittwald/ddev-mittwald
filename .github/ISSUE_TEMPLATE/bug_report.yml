@@ -1,0 +1,50 @@
+name: 🐞 Bug report or Support Request
+description: Create a report to help us improve
+labels: bug
+body:
+  - type: checkboxes
+    id: preliminary
+    attributes:
+      label: Preliminary Checklist
+      options:
+        - label: I have [searched the existing issues](https://github.com/mittwald/ddev-mittwald/issues)
+          required: true
+        - label: This issue is not a question or a request for help. (For questions or help, contact the mittwald support)
+          required: true
+        - label: I have [read the DDEV docs](https://ddev.readthedocs.io/en/stable/)
+          required: true
+        - label: I am using the latest version of DDEV (see [upgrade guide](https://ddev.readthedocs.io/en/stable/users/install/ddev-upgrade/))
+          required: true
+        - label: I am using the latest version of this add-on.
+          required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps To Reproduce
+      description: How do we reproduce the behavior?
+      placeholder: |
+        1. This is the first step
+        2. This is the second step, etc.
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Links? References? Screenshots? Anything else we should know? You can attach images or log files by clicking this area to highlight it and then dragging the files in.
+    validations:
+      required: false

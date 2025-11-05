@@ -2,9 +2,9 @@ setup() {
   set -eu -o pipefail
 
   export DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )/.."
-  export TESTDIR=~/tmp/test-addon-template
+  export TESTDIR=~/tmp/test-mittwald
   mkdir -p $TESTDIR
-  export PROJNAME=test-addon-template
+  export PROJNAME=test-mittwald
   export DDEV_NON_INTERACTIVE=true
   ddev delete -Oy ${PROJNAME} >/dev/null 2>&1 || true
   cd "${TESTDIR}"
@@ -30,7 +30,7 @@ setup_ssh_in_ddev() {
 setup_addon_from_dir() {
   export MITTWALD_SKIP_CONFIG=yes
 
-  ddev get ${DIR}
+  ddev add-on get ${DIR}
   ddev restart >/dev/null
 }
 
@@ -38,7 +38,7 @@ setup_addon_from_dir() {
   set -eu -o pipefail
   cd ${TESTDIR}
 
-  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  echo "# ddev add-on get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
   setup_addon_from_dir
 }
 
@@ -65,10 +65,13 @@ EOF
 
   setup_addon_from_dir
 
+  ddev mw context get -ojson
+
   local inst_id=$(ddev mw context get -ojson | jq -r '.["installation-id"].value')
   test -n "${inst_id}"
 }
 
+# bats test_tags=release
 @test "install from release" {
   set -eu -o pipefail
 
@@ -79,8 +82,8 @@ EOF
   export MITTWALD_SKIP_CONFIG=yes
 
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
-  echo "# ddev get mittwald/ddev with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
-  ddev get mittwald/ddev
+  echo "# ddev add-on get mittwald/ddev-mittwald with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  ddev add-on get mittwald/ddev-mittwald
   ddev restart >/dev/null
 }
 
