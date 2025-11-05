@@ -69,6 +69,7 @@ EOF
   test -n "${inst_id}"
 }
 
+# bats test_tags=release
 @test "install from release" {
   set -eu -o pipefail
 
