@@ -1,3 +1,9 @@
+[![add-on registry](https://img.shields.io/badge/DDEV-Add--on_Registry-blue)](https://addons.ddev.com)
+[![tests](https://github.com/mittwald/ddev-mittwald/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/mittwald/ddev-mittwald/actions/workflows/tests.yml?query=branch%3Amain)
+[![last commit](https://img.shields.io/github/last-commit/mittwald/ddev-mittwald)](https://github.com/mittwald/ddev-mittwald/commits)
+[![release](https://img.shields.io/github/v/release/mittwald/ddev-mittwald)](https://github.com/mittwald/ddev-mittwald/releases/latest)
+
+
 <h1 align="center">mittwald DDEV addon</h1>
 
 <p align="center">
@@ -24,10 +30,10 @@ This addon has the following requirements:
 - An API token for the [mittwald mStudio v2 API][api-intro]; you will be prompted for this token during the installation process (if not already configured)
 - An existing application on the mittwald cloud; you will need the application id (formatted like `a-XXXXXX`).
 
-You can install this addon by running `ddev get`:
+You can install this addon by running `ddev add-on get`:
 
 ```
-$ ddev get mittwald/ddev
+$ ddev add-on get mittwald/ddev-mittwald
 ```
 
 The installation process will prompt you for a [mittwald API token][api-intro] and your application ID. The former will be added to your global DDEV configuration, the latter to your local project configuration.
