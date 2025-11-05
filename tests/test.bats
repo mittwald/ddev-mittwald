@@ -65,6 +65,8 @@ EOF
 
   setup_addon_from_dir
 
+  ddev mw context get -ojson
+
   local inst_id=$(ddev mw context get -ojson | jq -r '.["installation-id"].value')
   test -n "${inst_id}"
 }
